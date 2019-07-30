@@ -1,6 +1,12 @@
 <?php require_once("../../conexao/conexao.php"); ?>
 
 <?php
+    // iniciar sessão
+    session_start();
+
+    if( !isset($_SESSION["user_portal"])){
+        header("location:login.php");
+    }
     // Determinar localidade BR
     setlocale(LC_ALL, 'pt_BR');
 
@@ -41,6 +47,9 @@
             
             <div id="listagem_produtos"> 
             <?php
+                if( isset($_SESSION["user_portal"])){
+                    echo $_SESSION["user_portal"];
+                }
                 while($linha = mysqli_fetch_assoc($resultado)) {
             ?>
                 <ul>
@@ -51,7 +60,7 @@
                     </li>
                     <li><h3><?php echo $linha["nomeproduto"] ?></h3></li>
                     <li>Tempo de Entrega : <?php echo $linha["tempoentrega"] ?></li>
-                    <li>Pre&ccedil;o unit&aacute;rio : <?php echo money_format('%.2n',$linha["precounitario"]) ?></li>
+                    <li>Preco unitario : <?php echo "R$ " , number_format($linha["precounitario"], 2, ',', '.') ?></li>
                 </ul>
              <?php
                 }

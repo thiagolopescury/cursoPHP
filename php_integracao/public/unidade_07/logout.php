@@ -1,6 +1,8 @@
 <?php require_once("../../conexao/conexao.php"); ?>
 <?php
+// Iniciar uma Sessão
 session_start();
+
 ?>
 
 <!doctype html>
@@ -24,10 +26,11 @@ session_start();
 
     <main>
         <?php
-        echo $_SESSION["usuario"];
+        //Exclui a variavel Sessão setada
+        unset($_SESSION["usuario"]);
+        //destroi todas as variaveis da sessão
+        session_destroy();
         ?>
-
-        <p><a href="logout.php"> Logout </a></p>
 
     </main>
 
