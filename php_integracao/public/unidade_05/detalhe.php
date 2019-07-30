@@ -15,15 +15,15 @@ if (!$detalhe) {
     die("Falha na conexão com o Banco de Dados");
 } else {
     $dados_detalhe = mysqli_fetch_assoc($detalhe);
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
-    $produto_id = $dados_detalhe["produtoID"];
+    $produto_id       = $dados_detalhe["produtoID"];
+    $nomeproduto      = $dados_detalhe["nomeproduto"];
+    $descricao        = $dados_detalhe["descricao"];
+    $codigobarra      = $dados_detalhe["codigobarra"];
+    $tempoentrega     = $dados_detalhe["tempoentrega"];
+    $precorevenda     = $dados_detalhe["precorevenda"];
+    $precounitario    = $dados_detalhe["precounitario"];
+    $estoque          = $dados_detalhe["estoque"];
+    $imagemgrande    = $dados_detalhe["imagemgrande"];
 }
 
 ?>
@@ -37,14 +37,26 @@ if (!$detalhe) {
 
     <!-- estilo -->
     <link href="_css/estilo.css" rel="stylesheet">
+    <link href="_css/produto_detalhe.css" rel="stylesheet">
 </head>
 
 <body>
     <?php include_once("_incluir/topo.php"); ?>
 
     <main>
+        <div id="detalhe_produto">
+            <ul>
+                <li class="imagem"> <img src="<?php echo $imagemgrande ?>"> </li>
+                <li> <h2><?php echo $nomeproduto ?> </h2></li>
+                <li> <b>Descrição: </b><?php echo $descricao ?> </li>
+                <li><b>Codigo de Barra: </b><?php echo $codigobarra ?> </li>
+                <li><b>Tempo de entrega: </b><?php echo $tempoentrega ?> </li>
+                <li><b>Preço de revenda: </b><?php echo "R$: " . number_format($precorevenda,2,",",".") ?> </li>
+                <li><b>Preço Unitario: </b><?php echo "R$: " . number_format($precounitario,2,",",".") ?> </li>
+                <li><b>Estoque: </b><?php echo $estoque ?> </li>
+            </ul>
 
-        <?php print_r($dados_detalhe); ?>
+
 
     </main>
 
