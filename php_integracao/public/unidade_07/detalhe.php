@@ -10,7 +10,7 @@ if (!isset($_SESSION["user_portal"])) {
 if (isset($_GET["codigo"])) {
     $produto_id = $_GET["codigo"];
 } else {
-    Header("Location: inicial.php");
+    Header("Location: login.php");
 }
 
 // Consulta ao banco de dados
