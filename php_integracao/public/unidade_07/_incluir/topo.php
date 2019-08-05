@@ -14,7 +14,7 @@
             $nome = $saudacao_login["nomecompleto"]; 
             ?>
 
-          <div id="header_saudacao"><h5> Bem vindo, <?php echo $nome ?> </h5>  
+          <div id="header_saudacao"><h5> Bem vindo, <?php echo $nome ?> -  <a href="sair.php">Sair</a> </h5>  
         
         <?php 
             }
