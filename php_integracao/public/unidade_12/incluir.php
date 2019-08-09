@@ -11,6 +11,7 @@
         $mensagem2 = $resultado2[0];
         
         $nomeproduto    = utf8_decode($_POST['nomeproduto']);
+        $descricao    = utf8_decode($_POST['descricao']);
         $codigobarra    = utf8_decode($_POST['codigobarra']);
         $tempoentrega   = $_POST['tempoentrega'];
         $categoriaID    = $_POST['categoriaID'];
@@ -23,9 +24,9 @@
         
         // Insercao no banco
         $inserir = "INSERT INTO produtos ";
-        $inserir .="(nomeproduto,codigobarra,tempoentrega,categoriaID,fornecedorID,precounitario,precorevenda,estoque,imagemgrande,imagempequena) ";
+        $inserir .="(nomeproduto,descricao,codigobarra,tempoentrega,categoriaID,fornecedorID,precounitario,precorevenda,estoque,imagemgrande,imagempequena) ";
         $inserir .="VALUES ";
-        $inserir .="('$nomeproduto','$codigobarra',$tempoentrega,$categoriaID,$fornecedorID,$precounitario,$precorevenda,$estoque,'$imagem_grande','$imagem_pequena')";
+        $inserir .="('$nomeproduto','$descricao','$codigobarra',$tempoentrega,$categoriaID,$fornecedorID,$precounitario,$precorevenda,$estoque,'$imagem_grande','$imagem_pequena')";
         $qInserir = mysqli_query($conecta,$inserir);
         if(!$qInserir) {
             die("Erro na insercao");   
@@ -71,7 +72,9 @@
                     
                     <!-- campo de nome do produto e codigo de barra -->
                     <input type="text" name="nomeproduto" placeholder="Nome do Produto">
-                    <input type="text" name="codigobarra" placeholder="Codigo de Barra">                      
+                    <input type="text" name="codigobarra" placeholder="Codigo de Barra">
+                    <input type="text" name="descricao" placeholder="Descrição do Produto">
+                                          
                     
                     <!-- campo de tempo de entrega -->
                     <label>Tempo de Entrega</label>
